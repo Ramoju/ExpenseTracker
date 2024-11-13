@@ -1,0 +1,10 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid">
+        <lightning-button variant="brand-outline" label="Previous" title="Previous Record page" onclick={handlePrevious} class="slds-m-left_x-small"></lightning-button>
+        <br/>
+        <lightning-button variant="brand-outline" label="Next" title="Next Record page" onclick={handleNext} class="slds-m-left_x-small"></lightning-button>
+        </div>
+        <lightning-formatted-text>{accIds}</lightning-formatted-text>
+    </lightning-card>
+</template>

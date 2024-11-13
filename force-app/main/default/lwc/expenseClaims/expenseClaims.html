@@ -1,0 +1,47 @@
+<template>
+    <template lwc:if={error}> <lightning-formatted-text value={error} ></lightning-formatted-text> </template>
+    <template lwc:else>
+    <lightning-card title="Expense Claims">
+        <div class="slds-p-around_medium slds-grid slds-gutters">
+            <div class = "slds-col">
+            <p>Name: <lightning-formatted-text value={userName} ></lightning-formatted-text></p>
+            <br>
+            <br>
+            <lightning-input label="Expense Claim Name" value={expenseTrackerName} onchange={handleFieldChange}></lightning-input>
+            </div>
+            <div class = "slds-col">
+            <lightning-input label="Incurred Date" type = "date" value={expenseClaimDate} onchange={handleFieldChange}></lightning-input>
+            <lightning-combobox 
+            name="activity"
+            label="Activity"
+            value={activityValue}
+            placeholder="Select Activity"
+            options={expenseActivities}
+            onchange={handleActivityChange} ></lightning-combobox>
+        </div>
+        </div>
+
+        <!-- Data Table -->
+        <c-custom-data-table
+            key-field="Id"
+            data={expensetrackers} 
+            columns={columns} 
+            onvalueselect={handleSelection}
+            draft-values={draftValues} 
+            onsave={handleSave}
+            oncancel={handleCancel}
+            onrowaction={handleRowAction}
+            oncellchange = {handleCellChange}
+            hide-checkbox-column>
+        </c-custom-data-table>
+
+        <!-- Buttons -->
+        <div class="slds-p-around_medium slds-align_absolute-center">
+            <lightning-button label="Add Record" onclick={handleAddRecord}></lightning-button>
+            &nbsp;
+            &nbsp;
+            <lightning-button variant="brand" label="Save Records" onclick={handleSaveRecords}></lightning-button>
+        </div>
+    </lightning-card>
+</template>
+</template>

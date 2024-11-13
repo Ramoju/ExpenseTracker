@@ -1,0 +1,35 @@
+<template>
+    <lightning-modal-header label="New Expense Tracker"></lightning-modal-header>
+    <lightning-modal-body> 
+        <div class="slds-p-around_medium slds-grid slds-gutters">
+            <div class = slds-col>
+                <lightning-input label="Incurred Date" type = "date" onchange = {handleExpenseDate}></lightning-input>
+                <lightning-combobox 
+                name="category"
+                label="Expense Category"
+                value={categoryValue}
+                placeholder="Choose Category"
+                options={categoryoptions}
+                onchange={handleCategoryChange} ></lightning-combobox>
+            </div>
+            <div class = slds-col>
+                <lightning-input label="Amount" type = "currency" onchange = {handleAmount}></lightning-input>
+                <lightning-input label="Other Info" type = "text" onchange = {handleComments}></lightning-input>
+            </div>
+        </div>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button
+            class="slds-button"
+            variant="neutral"
+            label="Cancel"
+            onclick={handleDismiss}
+        ></lightning-button>
+        <lightning-button
+            class="slds-button slds-m-left_x-small"
+            variant="brand"
+            label="Save"
+            onclick={handleSaveClick}
+        ></lightning-button>
+    </lightning-modal-footer>
+</template>
